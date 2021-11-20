@@ -32,14 +32,13 @@ form label {
 }
 
 button {
-  display: block;
   background-color: #4caf50;
   border: none;
   border-radius: 6px;
-  font-size: 20px;
-  line-height: 48px;
-  padding: 0 16px;
-  width: 300px;
+  font-size: 10px;
+  line-height: 35px;
+  padding: 10 16px;
+  width: 100px;
   color: white;
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
@@ -64,6 +63,19 @@ legend {
 }
 
 .danger {
-  color: red;
+  color: #dc3545;
   text-align: center;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-warning {
+  background-color: #ffca2c;
+}
+
+.is-invalid {
+  border: 2px solid tomato;
 }

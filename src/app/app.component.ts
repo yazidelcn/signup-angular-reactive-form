@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
       {
         firstName: ["", Validators.required],
         lastName : ["", Validators.required],
-        email : ["", Validators.required, Validators.email],
+        email : ["", [Validators.required, Validators.email]],
         password: ["", Validators.required],
         confirmPassword: ["", Validators.required],
         acceptTerms:["", Validators.required]
@@ -41,5 +41,11 @@ export class AppComponent implements OnInit{
     this.submit=false;
     this.registerForm?.reset();
   }
+
+
+  get h(){
+    return this.registerForm.controls;
+  }
+
 
 }
