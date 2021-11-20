@@ -1,30 +1,48 @@
 <div class="container">
   <div class="row mt-4">
     <section class="contact">
-      <form>
+      <form [formGroup]="registerForm">
         <fieldset>
             <legend>Sign in</legend>
              <div class="container">
+            
+            
              <label for="firstName">First name</label>
              <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First name" />
-
+             <p class="warning">First name is required !</p>
+            
              <label for="lastName">Last name</label>
              <input class="form-control" type="text" name="LastName" id="LastName" placeholder="Last name" />
+             <p class="warning">Last name is required !</p>
 
              <label for="email">Email</label>
              <input  class="form-control" type="email" id="email" name="email" placeholder="exemple@ex.com"/>
- 
+             <p class="warning">Email is required !</p>
+             <p class="danger">Please enter a valid email !</p>
+
              <label for="password">Password</label>
              <input  class="form-control" id="objet" id="password" name="password" placeholder="password" type="password">
+             <p class="warning">Password name is required !</p>
 
              <label for="cofirm">Confirm password</label>
              <input  class="form-control" id="cofirm" id="password" name="cofirm" placeholder="cofirm password" type="password">
+             <p class="danger">Passwords do not match</p>
+
+
+             <label for="terms">
+             <input type="checkbox" name="terms" id="terms">
+             Accept Terms</label>
+             <p class="danger">Please accept Terms</p>
              
-             <label for="terms">Accept Terms</label>
-             <input type="checkbox" name="terms" id="terms" class="form-control">
              <button>Send</button>
+             <button>Reset</button>
          </div>
         </fieldset>
+        <div style="color:  tomato;">
+          <p>{{registerForm.value | json }}</p>  
+          <p>{{registerForm.valid | json}}</p>
+        </div>
+        
       </form>  
   </section>   
 

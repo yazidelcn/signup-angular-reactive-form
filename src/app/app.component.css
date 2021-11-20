@@ -57,3 +57,13 @@ legend {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.warning {
+  color: goldenrod;
+  text-align: center;
+}
+
+.danger {
+  color: red;
+  text-align: center;
+}

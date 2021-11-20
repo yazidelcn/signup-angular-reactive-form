@@ -8,7 +8,7 @@ import { passworCheker } from './validators/password-checker';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  registerForm?: FormGroup;
+  registerForm!: FormGroup;
   title = 'reactive-forms';
   submit: boolean = false;
 
