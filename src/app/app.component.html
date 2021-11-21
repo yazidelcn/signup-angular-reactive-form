@@ -12,32 +12,49 @@
              [ngClass]="{'is-invalid': submit && h.firstName.errors}"
              class="form-control" type="text" name="firstName"
               id="firstName" placeholder="First name" />
-             <p class="warning">First name is required !</p>
-            
+            <div *ngIf="submit && h.firstName.errors">
+             <p   *ngIf="submit && h.firstName.errors.required" 
+             class="warning">First name is required !</p>
+            </div>
+
              <label for="lastName">Last name</label>
              <input formControlName="lastName" 
              [ngClass]="{'is-invalid': submit && h.lastName.errors}"
              class="form-control" type="text" name="LastName" id="LastName" placeholder="Last name" />
-             <p class="warning">Last name is required !</p>
+             <div *ngIf="submit && h.lastName.errors">
+              <p   *ngIf="submit && h.lastName.errors.required" 
+              class="warning">Last name is required !</p>
+             </div>
+            
 
              <label for="email">Email</label>
              <input  formControlName="email"
              [ngClass]="{'is-invalid': submit && h.email.errors}"
              class="form-control" type="email" id="email" name="email" placeholder="exemple@ex.com"/>
-             <p class="warning">Email is required !</p>
-             <p class="danger">Please enter a valid email !</p>
+             <div *ngIf="h.email.touched   && h.email.errors">
+              <p *ngIf="h.email.errors.required" class="warning">Email is required !</p>
+              <p *ngIf="h.email.errors.email" class="danger">Please enter a valid email !</p>
+            </div>
+
 
              <label for="password">Password</label>
              <input  formControlName="password"
-             [ngClass]="{'is-invalid': submit && h.password.errors}"
+             [ngClass]="{'is-invalid': h.password.touched && h.password.errors}"
              class="form-control" id="objet" id="password" name="password" placeholder="password" type="password">
-             <p class="warning">Password name is required !</p>
+            <div *ngIf="h.password.touched && h.password.errors">
+              <p *ngIf="h.password.errors.required" class="warning">Password is required !</p>
+              <p *ngIf="h.password.errors.minlength" class="danger">should be at least 7 charachters </p>
+            </div>
 
              <label for="cofirm">Confirm password</label>
              <input formControlName="confirmPassword" 
              [ngClass]="{'is-invalid': submit && h.confirmPassword.errors}"
               class="form-control" id="cofirm" id="password" name="cofirm" placeholder="cofirm password" type="password">
-             <p class="danger">Passwords do not match</p>
+             <div *ngIf="h.confirmPassword.touched && h.confirmPassword.errors">
+              <p *ngIf="h.confirmPassword.errors.required" class="warning">Password is required !</p>
+              <p  *ngIf="h.confirmPassword.errors.mustmatch"class="danger">Passwords do not match</p>
+             </div>
+             
 
 
              <label for="terms">
@@ -45,19 +62,16 @@
              [ngClass]="{'is-invalid': submit && h.acceptTerms.errors}"
              name="terms" id="terms" formControlName="acceptTerms">
              Accept Terms</label>
-             <p class="danger">Please accept Terms</p>
-
-             <div class="btn-group">
-              <button>Send</button>
-              <button class="btn-warning" (click)="onReset()">Reset</button>
-             </div>
-            
+            <div *ngIf="submit && h.acceptTerms.errors">
+              <p *ngIf="h.acceptTerms.errors.required" class="danger">Please accept Terms</p>
+            </div>   
          </div>
         </fieldset>
-        <div style="color:  tomato;">
-          <p>{{registerForm.value | json }}</p>  
-          <p>{{registerForm.valid | json}}</p>
-        </div>
+
+        <div class="btn-group">
+          <button>Send</button>
+          <button class="btn-warning" (click)="onReset()">Reset</button>
+         </div>         
         
       </form>  
   </section>   
